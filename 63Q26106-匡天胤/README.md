@@ -11,7 +11,7 @@
 | `report.pdf` | A4 一页报告（本次作业正文） |
 | `report.md` | 同上内容的 Markdown 版，便于在 GitHub 上直接阅读 |
 | `lean-auto.zip` | 实验源码（Python，纯标准库）：LLM 生成 → 静态闸门 → Lean 验证 → 公理审计 → 报错回灌 |
-| `lean_auto-0.1.0-py3-none-any.whl` | 可安装的 Python 包（`pip install` 后得到 `lean-auto` 命令） |
+| `lean_auto-0.2.0-py3-none-any.whl` | 可安装的 Python 包（`pip install` 后得到 `lean-auto` 命令） |
 
 ## 实验概要
 
@@ -28,7 +28,11 @@
 ## 复现
 
 ```bash
-# 需要 Lean 4.36 + Mathlib（lake env lean）
+# 方式一：从 wheel 安装并自举环境
+pip install lean_auto-0.2.0-py3-none-any.whl
+lean-auto setup && source ~/.lean-auto/env.sh
+
+# 方式二：已有 Lean + Mathlib
 unzip lean-auto.zip && cd lean-auto
 export LLM_MODEL=Qwen/Qwen3.5-27B
 export OPENAI_BASE_URL=https://api-inference.modelscope.cn/v1
